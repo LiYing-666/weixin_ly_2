@@ -24,9 +24,9 @@ import com.example.weixin_ly_2.service.MessageTypeMapper;
 // @RestController 符合RESTful风格的WEB服务的控制器
 // RESTful通过不同的请求方法调用不同的处理程序，返回的结果仅仅是数据，不包含视图（HTML、JSP）
 @RestController
-// 各自写代码的时候，把/zzr_1改为【/拼音名】，用于后面作为路径反向代理的时候区分不同人的代码
+// 各自写代码的时候，把/ly_2改为【/拼音名】，用于后面作为路径反向代理的时候区分不同人的代码
 // @RequestMapping表示的含义：URL跟控制器的关系映射
-@RequestMapping("/zzr_1/weixin/receiver")	
+@RequestMapping("/ly_2/weixin/receiver")	
 public class MessageReceiverController {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(MessageReceiverController.class);
@@ -82,7 +82,7 @@ public class MessageReceiverController {
 			LOG.debug("转换得到的消息对象 \n{}\n", inMessage.toString());
 			
 			// 使用默认的序列化程序来实现序列化
-			inMessageTemplate.convertAndSend("zzr_1_" + inMessage.getMsgType(), inMessage);
+			inMessageTemplate.convertAndSend("ly_2_" + inMessage.getMsgType(), inMessage);
 			
 //			// 把消息放入消息队列
 //			inMessageTemplate.execute(new RedisCallback<String>() {
@@ -96,7 +96,7 @@ public class MessageReceiverController {
 //						// 比如文本消息、图片消息处理方式不同，所以使用前缀来隔离： text* 表示文本消息、image* 表示图片消息。
 //						// 建议在多人共享一个服务器的时候，每个人使用不同的数据库实例即可，并且建议在通道名称之前加上反向代理的前缀。
 //
-//						String channel = "zzr_1_" + inMessage.getMsgType();
+//						String channel = "ly_2_" + inMessage.getMsgType();
 //
 //						// 消息内容要自己序列化才能放入队列中
 //						ByteArrayOutputStream out = new ByteArrayOutputStream();// 输出流
